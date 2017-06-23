@@ -36,78 +36,84 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         
+        getData()
+        
+        let cancelButtonAttributes: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [String : AnyObject], for: UIControlState.normal)
+       
         
         
-        var recipeName = String()
         
-        if isSearching {
-            if searchBar.text != nil || searchBar.text != "" {
-                recipeName = searchBar.text!
-                let recipeNameAddingPercentEncoding = recipeName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
-                let searchUrl = URL(string: "http://www.recipepuppy.com/api/?q\(recipeNameAddingPercentEncoding)")
-                
-                searchedRecipes = parseData(url: searchUrl!)
-                print("COUNT 1: \(searchedRecipes.count)")
-//                do {
-//                    let data = try Data(contentsOf: searchUrl!)
-//                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-//                    //print(json)
-//                    let result = json[resultsString] as! [[String:AnyObject]]
-//                    
-//                    //print("RESULT\n \(result)")
-//                    //print(result.count)
-//                    
-//                    for i in result {
-//                        
-//                        let singleRecipe = Recipe(dictionary: i)
-//                        
-//                        searchedRecipes.append(singleRecipe)
-//                    }
-//                    print("SEARCH\n\(searchedRecipes.count)")
-//                    //print(searchedRecipes[1])
-//                    
-//                    
-//                    
-//                }
-//                catch {
-//                    print(error)
-//                }
-
-            }
-        } else {
-            //Default url
-            let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
-            
-//            do {
-//                let data = try Data(contentsOf: defaultUrl!)
-//                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-//                //print(json)
-//                let result = json[resultsString] as! [[String:AnyObject]]
+//        var recipeName = String()
+//        
+//        if isSearching {
+//            if searchBar.text != nil || searchBar.text != "" {
+//                recipeName = searchBar.text!
+//                let recipeNameAddingPercentEncoding = recipeName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
+//                let searchUrl = URL(string: "http://www.recipepuppy.com/api/?q\(recipeNameAddingPercentEncoding)")
 //                
-//                //print("RESULT\n \(result)")
-//                //print(result.count)
-//                
-//                for i in result {
-//                    
-//                    let singleRecipe = Recipe(dictionary: i)
-//                    
-//                    defaultRecipes.append(singleRecipe)
-//                }
-//                print(defaultRecipes.count)
-//                print(defaultRecipes[1])
-//                
-//                
-//                
+//                searchedRecipes = parseData(url: searchUrl!)
+//                print("COUNT 1: \(searchedRecipes.count)")
+////                do {
+////                    let data = try Data(contentsOf: searchUrl!)
+////                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+////                    //print(json)
+////                    let result = json[resultsString] as! [[String:AnyObject]]
+////                    
+////                    //print("RESULT\n \(result)")
+////                    //print(result.count)
+////                    
+////                    for i in result {
+////                        
+////                        let singleRecipe = Recipe(dictionary: i)
+////                        
+////                        searchedRecipes.append(singleRecipe)
+////                    }
+////                    print("SEARCH\n\(searchedRecipes.count)")
+////                    //print(searchedRecipes[1])
+////                    
+////                    
+////                    
+////                }
+////                catch {
+////                    print(error)
+////                }
+//
 //            }
-//            catch {
-//                print(error)
-//            }
-            
-            defaultRecipes = parseData(url: defaultUrl!)
-            print("COUNT 2: \(defaultRecipes.count)")
-
-        }
-
+//        } else {
+//            //Default url
+//            let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
+//            
+////            do {
+////                let data = try Data(contentsOf: defaultUrl!)
+////                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+////                //print(json)
+////                let result = json[resultsString] as! [[String:AnyObject]]
+////                
+////                //print("RESULT\n \(result)")
+////                //print(result.count)
+////                
+////                for i in result {
+////                    
+////                    let singleRecipe = Recipe(dictionary: i)
+////                    
+////                    defaultRecipes.append(singleRecipe)
+////                }
+////                print(defaultRecipes.count)
+////                print(defaultRecipes[1])
+////                
+////                
+////                
+////            }
+////            catch {
+////                print(error)
+////            }
+//            
+//            defaultRecipes = parseData(url: defaultUrl!)
+//            print("COUNT 2: \(defaultRecipes.count)")
+//
+//        }
+//
     }
 
 
@@ -151,17 +157,55 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        if searchBar.text == nil || searchBar.text == "" {
+//            isSearching = false
+//            view.endEditing(true)
+//            getData()
+//            tableView.reloadData()
+//        } else {
+//            isSearching = true
+//            getData()
+//            tableView.reloadData()
+//        }
+//
+//    }
+//    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == nil || searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
+            getData()
             tableView.reloadData()
         } else {
             isSearching = true
+            getData()
             tableView.reloadData()
         }
 
     }
+    
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        
+    }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text == nil || searchBar.text == "" {
+//            isSearching = false
+//            view.endEditing(true)
+//            getData()
+//            tableView.reloadData()
+//        } else {
+//            isSearching = true
+//            getData()
+//            tableView.reloadData()
+//        }
+//
+//    }
 
  
     func parseData(url: URL) -> [Recipe] {
@@ -192,6 +236,79 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             print(error)
         }
             return recipeArray
+    }
+    
+    
+    func getData() {
+        if isSearching {
+            if searchBar.text != nil || searchBar.text != "" {
+                let recipeName = searchBar.text!
+                let recipeNameAddingPercentEncoding = recipeName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
+                
+                let searchUrl = URL(string: "http://www.recipepuppy.com/api/?q=\(recipeNameAddingPercentEncoding!)")
+                
+                searchedRecipes = parseData(url: searchUrl!)
+                print("COUNT 1: \(searchedRecipes.count)")
+                //                do {
+                //                    let data = try Data(contentsOf: searchUrl!)
+                //                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+                //                    //print(json)
+                //                    let result = json[resultsString] as! [[String:AnyObject]]
+                //
+                //                    //print("RESULT\n \(result)")
+                //                    //print(result.count)
+                //
+                //                    for i in result {
+                //
+                //                        let singleRecipe = Recipe(dictionary: i)
+                //
+                //                        searchedRecipes.append(singleRecipe)
+                //                    }
+                //                    print("SEARCH\n\(searchedRecipes.count)")
+                //                    //print(searchedRecipes[1])
+                //
+                //
+                //
+                //                }
+                //                catch {
+                //                    print(error)
+                //                }
+                
+            }
+        } else {
+            //Default url
+            let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
+            
+            //            do {
+            //                let data = try Data(contentsOf: defaultUrl!)
+            //                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+            //                //print(json)
+            //                let result = json[resultsString] as! [[String:AnyObject]]
+            //
+            //                //print("RESULT\n \(result)")
+            //                //print(result.count)
+            //
+            //                for i in result {
+            //
+            //                    let singleRecipe = Recipe(dictionary: i)
+            //                    
+            //                    defaultRecipes.append(singleRecipe)
+            //                }
+            //                print(defaultRecipes.count)
+            //                print(defaultRecipes[1])
+            //                
+            //                
+            //                
+            //            }
+            //            catch {
+            //                print(error)
+            //            }
+            
+            defaultRecipes = parseData(url: defaultUrl!)
+            print("COUNT 2: \(defaultRecipes.count)")
+            
+        }
+
     }
     
 
