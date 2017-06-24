@@ -8,36 +8,30 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
 
 
-////var imageURL:UIImageView!
-////var iconImage = UIImage()
-//
-////func stringToImage (string: String) -> UIImage {
-////    
-////    let iconImage = UIImage(named: string)
-////    return iconImage!
-////}
-//
-//func stringToImage (string: String) -> UIImage {
-//    
-//    //var imageURL:UIImageView!
-//   // var iconImage = UIImage()
-//    
-//    let url = URL(string: string) //NSURL(string: strIcon)
-//    let data = NSData(contentsOf: url!)  //(contentsOfURL:url! as URL)
-//    //if data != nil {
-//        
-//     var iconImage = UIImage(data:data! as Data)!
-//
-//        
-//        //imageURL.image = iconImage
-//        //iconImage = imageURL.image!
-//    //}
-//    
-//    //let iconImage = UIImage(named: strIcon)
-//    return iconImage
-//}
+var ref: DatabaseReference? = Database.database().reference()
+
+
+
+//MARK: Save data to Firebase
+func saveDataToFirebase(text: [String : Any]) {
+    
+    
+    ref?.child(dishesString).childByAutoId().setValue(text)
+    
+}
+
+func stringToImage(string: String) -> UIImage {
+    let imageUrl = URL(string: string)!
+    let data = NSData(contentsOf: imageUrl)
+    let image = UIImage(data:data! as Data)!
+    
+    return image
+    
+}
+
 
 
 

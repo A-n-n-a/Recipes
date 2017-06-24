@@ -13,3 +13,5 @@ let titleString = "title"
 let hrefString = "href"
 let ingredientsString = "ingredients"
 let thumbnailString = "thumbnail"
+
+let dishesString = "Dishes"

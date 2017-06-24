@@ -14,7 +14,7 @@ struct Recipe {
     var title: String
     var href: String
     var ingredients: String
-    var recipeImage: UIImage?
+    var recipeImage: String?
     
     init(dictionary: [String:AnyObject]) {
         
@@ -47,7 +47,7 @@ struct Recipe {
         self.title = title
         self.href = href
         self.ingredients = ingredients
-        self.recipeImage = imageFromUrl
+        self.recipeImage = stringImage
         
     }
     

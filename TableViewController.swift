@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class TableViewController: UITableViewController, UISearchBarDelegate {
 
@@ -16,7 +17,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     var defaultRecipes = [Recipe]()
     var searchedRecipes = [Recipe]()
+    var recipesFromFirebase = [Recipe]()
 
+    var item = [String : AnyObject]()
+    var dishes = [String]()
+    var id = String()
+    var idArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,94 +42,20 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         
+        retrieveDataFromFirebase()
+        
+        print(idArray.count)
+        print(idArray)
+        
         getData()
         
+        // Cancel button color
         let cancelButtonAttributes: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [String : AnyObject], for: UIControlState.normal)
        
         
         
-        
-//        var recipeName = String()
-//        
-//        if isSearching {
-//            if searchBar.text != nil || searchBar.text != "" {
-//                recipeName = searchBar.text!
-//                let recipeNameAddingPercentEncoding = recipeName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
-//                let searchUrl = URL(string: "http://www.recipepuppy.com/api/?q\(recipeNameAddingPercentEncoding)")
-//                
-//                searchedRecipes = parseData(url: searchUrl!)
-//                print("COUNT 1: \(searchedRecipes.count)")
-////                do {
-////                    let data = try Data(contentsOf: searchUrl!)
-////                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-////                    //print(json)
-////                    let result = json[resultsString] as! [[String:AnyObject]]
-////                    
-////                    //print("RESULT\n \(result)")
-////                    //print(result.count)
-////                    
-////                    for i in result {
-////                        
-////                        let singleRecipe = Recipe(dictionary: i)
-////                        
-////                        searchedRecipes.append(singleRecipe)
-////                    }
-////                    print("SEARCH\n\(searchedRecipes.count)")
-////                    //print(searchedRecipes[1])
-////                    
-////                    
-////                    
-////                }
-////                catch {
-////                    print(error)
-////                }
-//
-//            }
-//        } else {
-//            //Default url
-//            let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
-//            
-////            do {
-////                let data = try Data(contentsOf: defaultUrl!)
-////                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-////                //print(json)
-////                let result = json[resultsString] as! [[String:AnyObject]]
-////                
-////                //print("RESULT\n \(result)")
-////                //print(result.count)
-////                
-////                for i in result {
-////                    
-////                    let singleRecipe = Recipe(dictionary: i)
-////                    
-////                    defaultRecipes.append(singleRecipe)
-////                }
-////                print(defaultRecipes.count)
-////                print(defaultRecipes[1])
-////                
-////                
-////                
-////            }
-////            catch {
-////                print(error)
-////            }
-//            
-//            defaultRecipes = parseData(url: defaultUrl!)
-//            print("COUNT 2: \(defaultRecipes.count)")
-//
-//        }
-//
     }
-
-
-
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -138,19 +70,29 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let cell = Bundle.main.loadNibNamed("CustomCell", owner: self, options: nil)?.first as! CustomCell
-        cell.photoImage.image = #imageLiteral(resourceName: "leather1.jpg")
+        cell.photoImage.image = #imageLiteral(resourceName: "leather Chanel.jpg")
         
         if isSearching {
             
             cell.titleLabel.text = searchedRecipes[indexPath.row].title
             cell.recipeLabel.text = searchedRecipes[indexPath.row].ingredients
-            cell.photoImage.image = searchedRecipes[indexPath.row].recipeImage
+            var cellImage = UIImage()
+            if searchedRecipes[indexPath.row].recipeImage != "" {
+                cellImage = stringToImage(string: searchedRecipes[indexPath.row].recipeImage!)
+            }
+            //let cellImage = stringToImage(string: searchedRecipes[indexPath.row].recipeImage!)
+            cell.photoImage.image = cellImage
             
         } else {
             
             cell.titleLabel.text = defaultRecipes[indexPath.row].title
             cell.recipeLabel.text = defaultRecipes[indexPath.row].ingredients
-            cell.photoImage.image = defaultRecipes[indexPath.row].recipeImage
+            
+            var cellImage = UIImage()
+            if defaultRecipes[indexPath.row].recipeImage != "" {
+                cellImage = stringToImage(string: defaultRecipes[indexPath.row].recipeImage!)
+            }
+            cell.photoImage.image = cellImage
         }
         
         return cell
@@ -190,6 +132,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.text = ""
+        getData()
         
     }
     
@@ -225,6 +168,15 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 let singleRecipe = Recipe(dictionary: i)
                 
                 recipeArray.append(singleRecipe)
+                
+                let recipesItem = [
+                        titleString: singleRecipe.title,
+                        hrefString: singleRecipe.href,
+                        ingredientsString: singleRecipe.ingredients,
+                        thumbnailString: singleRecipe.recipeImage ?? " "
+                        ] as [String : Any]
+                saveDataToFirebase(text: recipesItem)
+                
             }
 //            print(defaultRecipes.count)
 //            print(defaultRecipes[1])
@@ -248,68 +200,50 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 let searchUrl = URL(string: "http://www.recipepuppy.com/api/?q=\(recipeNameAddingPercentEncoding!)")
                 
                 searchedRecipes = parseData(url: searchUrl!)
-                print("COUNT 1: \(searchedRecipes.count)")
-                //                do {
-                //                    let data = try Data(contentsOf: searchUrl!)
-                //                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-                //                    //print(json)
-                //                    let result = json[resultsString] as! [[String:AnyObject]]
-                //
-                //                    //print("RESULT\n \(result)")
-                //                    //print(result.count)
-                //
-                //                    for i in result {
-                //
-                //                        let singleRecipe = Recipe(dictionary: i)
-                //
-                //                        searchedRecipes.append(singleRecipe)
-                //                    }
-                //                    print("SEARCH\n\(searchedRecipes.count)")
-                //                    //print(searchedRecipes[1])
-                //
-                //
-                //
-                //                }
-                //                catch {
-                //                    print(error)
-                //                }
+                //print("COUNT 1: \(searchedRecipes.count)")
+                
+               // saveDataToFirebase(text: <#T##String#>)
                 
             }
         } else {
             //Default url
             let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
             
-            //            do {
-            //                let data = try Data(contentsOf: defaultUrl!)
-            //                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-            //                //print(json)
-            //                let result = json[resultsString] as! [[String:AnyObject]]
-            //
-            //                //print("RESULT\n \(result)")
-            //                //print(result.count)
-            //
-            //                for i in result {
-            //
-            //                    let singleRecipe = Recipe(dictionary: i)
-            //                    
-            //                    defaultRecipes.append(singleRecipe)
-            //                }
-            //                print(defaultRecipes.count)
-            //                print(defaultRecipes[1])
-            //                
-            //                
-            //                
-            //            }
-            //            catch {
-            //                print(error)
-            //            }
+
             
             defaultRecipes = parseData(url: defaultUrl!)
-            print("COUNT 2: \(defaultRecipes.count)")
+            //print("COUNT 2: \(defaultRecipes.count)")
             
         }
 
     }
+    
+    func getDefaultData() {
+        
+        //Default url
+        let defaultUrl = URL(string: "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3")
+        defaultRecipes = parseData(url: defaultUrl!)
+
+
+        
+    }
+    
+    func retrieveDataFromFirebase() {
+        
+        ref?.child(dishesString).observe(.childAdded, with: { (snapshot) in
+
+            self.item = snapshot.value! as! [String : AnyObject]
+            let singleRecipe = Recipe(dictionary: self.item)
+            self.recipesFromFirebase.append(singleRecipe)
+            self.id = snapshot.key
+            self.idArray.append(self.id)
+            print(self.idArray.count)
+
+        })
+
+    }
+    
+    
     
 
     

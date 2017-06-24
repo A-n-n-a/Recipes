@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		643FCF992FE7D1AC2B07A293 /* Pods_Recipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76CC8E20F6499D52911487E /* Pods_Recipe.framework */; };
 		959099401EF9950F001D0A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9590993F1EF9950F001D0A17 /* AppDelegate.swift */; };
 		959099451EF9950F001D0A17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959099431EF9950F001D0A17 /* Main.storyboard */; };
 		959099471EF9950F001D0A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959099461EF9950F001D0A17 /* Assets.xcassets */; };
@@ -14,14 +15,16 @@
 		959099561EF99876001D0A17 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099541EF99876001D0A17 /* CustomCell.swift */; };
 		959099571EF99876001D0A17 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959099551EF99876001D0A17 /* CustomCell.xib */; };
 		959099591EF9A0CC001D0A17 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099581EF9A0CC001D0A17 /* TableViewController.swift */; };
-		9590995D1EF9A932001D0A17 /* leather1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9590995C1EF9A932001D0A17 /* leather1.jpg */; };
 		959099621EF9AFA4001D0A17 /* Hard Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099611EF9AFA4001D0A17 /* Hard Code.swift */; };
 		959099641EF9B045001D0A17 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099631EF9B045001D0A17 /* Recipe.swift */; };
 		959099681EFA4078001D0A17 /* Puppy.png in Resources */ = {isa = PBXBuildFile; fileRef = 959099671EFA4078001D0A17 /* Puppy.png */; };
 		9590996A1EFAA05A001D0A17 /* Custom Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099691EFAA05A001D0A17 /* Custom Functions.swift */; };
+		959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */; };
+		959099D01EFDA07C001D0A17 /* leather Chanel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F832D9143C150CA515DFF91 /* Pods-Recipe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recipe/Pods-Recipe.debug.xcconfig"; sourceTree = "<group>"; };
 		9590993C1EF9950F001D0A17 /* Recipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9590993F1EF9950F001D0A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959099441EF9950F001D0A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,11 +34,14 @@
 		959099541EF99876001D0A17 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		959099551EF99876001D0A17 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		959099581EF9A0CC001D0A17 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
-		9590995C1EF9A932001D0A17 /* leather1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leather1.jpg; sourceTree = "<group>"; };
 		959099611EF9AFA4001D0A17 /* Hard Code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hard Code.swift"; sourceTree = "<group>"; };
 		959099631EF9B045001D0A17 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		959099671EFA4078001D0A17 /* Puppy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Puppy.png; sourceTree = "<group>"; };
 		959099691EFAA05A001D0A17 /* Custom Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Custom Functions.swift"; sourceTree = "<group>"; };
+		959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "leather Chanel.jpg"; path = "Pods/../../../Downloads/leather Chanel.jpg"; sourceTree = SOURCE_ROOT; };
+		C76CC8E20F6499D52911487E /* Pods_Recipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recipe/Pods-Recipe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643FCF992FE7D1AC2B07A293 /* Pods_Recipe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E8B0E3669C2EA1ECFCB87E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F832D9143C150CA515DFF91 /* Pods-Recipe.debug.xcconfig */,
+				ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		93CFE1FC023199FFE8A6D499 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C76CC8E20F6499D52911487E /* Pods_Recipe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		959099331EF9950F001D0A17 = {
 			isa = PBXGroup;
 			children = (
 				9590993E1EF9950F001D0A17 /* Recipe */,
 				9590993D1EF9950F001D0A17 /* Products */,
+				4E8B0E3669C2EA1ECFCB87E8 /* Pods */,
+				93CFE1FC023199FFE8A6D499 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,11 +99,12 @@
 				959099581EF9A0CC001D0A17 /* TableViewController.swift */,
 				959099431EF9950F001D0A17 /* Main.storyboard */,
 				959099461EF9950F001D0A17 /* Assets.xcassets */,
+				959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */,
 				959099671EFA4078001D0A17 /* Puppy.png */,
 				959099601EF9AF89001D0A17 /* Models */,
-				9590995C1EF9A932001D0A17 /* leather1.jpg */,
 				959099481EF9950F001D0A17 /* LaunchScreen.storyboard */,
 				9590994B1EF9950F001D0A17 /* Info.plist */,
+				959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -108,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9590994E1EF9950F001D0A17 /* Build configuration list for PBXNativeTarget "Recipe" */;
 			buildPhases = (
+				840C8512EC2668630523969A /* [CP] Check Pods Manifest.lock */,
 				959099381EF9950F001D0A17 /* Sources */,
 				959099391EF9950F001D0A17 /* Frameworks */,
 				9590993A1EF9950F001D0A17 /* Resources */,
+				78B0BFC8CF265DCC564692AB /* [CP] Embed Pods Frameworks */,
+				91B8CE9E12D56BE06312FFE9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,15 +192,64 @@
 			buildActionMask = 2147483647;
 			files = (
 				9590994A1EF9950F001D0A17 /* LaunchScreen.storyboard in Resources */,
-				9590995D1EF9A932001D0A17 /* leather1.jpg in Resources */,
 				959099681EFA4078001D0A17 /* Puppy.png in Resources */,
 				959099471EF9950F001D0A17 /* Assets.xcassets in Resources */,
 				959099571EF99876001D0A17 /* CustomCell.xib in Resources */,
+				959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */,
+				959099D01EFDA07C001D0A17 /* leather Chanel.jpg in Resources */,
 				959099451EF9950F001D0A17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78B0BFC8CF265DCC564692AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Recipe/Pods-Recipe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		840C8512EC2668630523969A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		91B8CE9E12D56BE06312FFE9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Recipe/Pods-Recipe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		959099381EF9950F001D0A17 /* Sources */ = {
@@ -305,6 +384,7 @@
 		};
 		9590994F1EF9950F001D0A17 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F832D9143C150CA515DFF91 /* Pods-Recipe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X8E2R8HQQL;
@@ -318,6 +398,7 @@
 		};
 		959099501EF9950F001D0A17 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X8E2R8HQQL;
