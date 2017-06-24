@@ -73,6 +73,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             cell.recipeLabel.text = recipesSearchFromFirebase[indexPath.row].ingredients
             if recipesSearchFromFirebase[indexPath.row].recipeImage != "" {
                 cellImage = stringToImage(string: recipesSearchFromFirebase[indexPath.row].recipeImage!)
+            } else {
+                cellImage = #imageLiteral(resourceName: "NoImageIcon.png")
             }
             cell.photoImage.image = cellImage
             
@@ -82,6 +84,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             cell.recipeLabel.text = recipesDefaultFromFirebase[indexPath.row].ingredients
             if recipesDefaultFromFirebase[indexPath.row].recipeImage != "" {
                 cellImage = stringToImage(string: recipesDefaultFromFirebase[indexPath.row].recipeImage!)
+            } else {
+                cellImage = #imageLiteral(resourceName: "NoImageIcon.png")
             }
             cell.photoImage.image = cellImage
         }

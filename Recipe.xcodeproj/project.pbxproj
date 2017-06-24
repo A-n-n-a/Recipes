@@ -19,6 +19,7 @@
 		959099641EF9B045001D0A17 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099631EF9B045001D0A17 /* Recipe.swift */; };
 		9590996A1EFAA05A001D0A17 /* Custom Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099691EFAA05A001D0A17 /* Custom Functions.swift */; };
 		959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */; };
+		959099D21EFEF4B0001D0A17 /* NoImageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 959099D11EFEF4B0001D0A17 /* NoImageIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		959099631EF9B045001D0A17 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		959099691EFAA05A001D0A17 /* Custom Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Custom Functions.swift"; sourceTree = "<group>"; };
 		959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		959099D11EFEF4B0001D0A17 /* NoImageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoImageIcon.png; path = ../../../Downloads/NoImageIcon.png; sourceTree = "<group>"; };
 		C76CC8E20F6499D52911487E /* Pods_Recipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recipe/Pods-Recipe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				959099581EF9A0CC001D0A17 /* TableViewController.swift */,
 				959099431EF9950F001D0A17 /* Main.storyboard */,
 				959099461EF9950F001D0A17 /* Assets.xcassets */,
+				959099D11EFEF4B0001D0A17 /* NoImageIcon.png */,
 				959099601EF9AF89001D0A17 /* Models */,
 				959099481EF9950F001D0A17 /* LaunchScreen.storyboard */,
 				9590994B1EF9950F001D0A17 /* Info.plist */,
@@ -190,6 +193,7 @@
 				959099571EF99876001D0A17 /* CustomCell.xib in Resources */,
 				959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */,
 				959099451EF9950F001D0A17 /* Main.storyboard in Resources */,
+				959099D21EFEF4B0001D0A17 /* NoImageIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
