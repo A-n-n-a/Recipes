@@ -15,3 +15,5 @@ let ingredientsString = "ingredients"
 let thumbnailString = "thumbnail"
 
 let dishesString = "Dishes"
+let defaultString = "Default"
+let searchString = "Search"

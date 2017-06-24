@@ -17,12 +17,14 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     var defaultRecipes = [Recipe]()
     var searchedRecipes = [Recipe]()
-    var recipesFromFirebase = [Recipe]()
+    var recipesDefaultFromFirebase = [Recipe]()
+    var recipesSearchFromFirebase = [Recipe]()
 
     var item = [String : AnyObject]()
     var dishes = [String]()
     var id = String()
-    var idArray = [String]()
+    var idDefaultArray = [String]()
+    var idSearchArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +44,10 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        retrieveDataFromFirebase()
+        retrieveDataFromFirebase(isSearching: isSearching)
         
-        print(idArray.count)
-        print(idArray)
+        print(idDefaultArray.count)
+        print(idDefaultArray)
         
         getData()
         
@@ -99,6 +101,34 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if  searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+            getData()
+            tableView.reloadData()
+//            } else {
+//                                isSearching = true
+//                                getData()
+//                                tableView.reloadData()
+        }
+
+    }
+    
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//                if  searchBar.text == "" {
+//                    isSearching = false
+//                    view.endEditing(true)
+//                    getData()
+//                   tableView.reloadData()
+////                } else {
+////                    isSearching = true
+////                    getData()
+////                    tableView.reloadData()
+//                }
+    
+           // }
+    
 //    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
 //        if searchBar.text == nil || searchBar.text == "" {
 //            isSearching = false
@@ -129,12 +159,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.text = ""
-        getData()
-        
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        
+//        searchBar.text = ""
+//        getData()
+//        
+//    }
     
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchBar.text == nil || searchBar.text == "" {
@@ -163,6 +193,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             //print("RESULT\n \(result)")
             //print(result.count)
             
+            removeDataFromFirebase(isSearching: isSearching)
+            
             for i in result {
                 
                 let singleRecipe = Recipe(dictionary: i)
@@ -175,7 +207,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                         ingredientsString: singleRecipe.ingredients,
                         thumbnailString: singleRecipe.recipeImage ?? " "
                         ] as [String : Any]
-                saveDataToFirebase(text: recipesItem)
+                
+                saveDataToFirebase(text: recipesItem, isSearching: isSearching)
                 
             }
 //            print(defaultRecipes.count)
@@ -228,25 +261,64 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    func retrieveDataFromFirebase() {
+    func retrieveDataFromFirebase(isSearching: Bool) {
         
-        ref?.child(dishesString).observe(.childAdded, with: { (snapshot) in
-
-            self.item = snapshot.value! as! [String : AnyObject]
-            let singleRecipe = Recipe(dictionary: self.item)
-            self.recipesFromFirebase.append(singleRecipe)
-            self.id = snapshot.key
-            self.idArray.append(self.id)
-            print(self.idArray.count)
-
-        })
+        if isSearching {
+        
+            ref?.child(defaultString).observe(.childAdded, with: { (snapshot) in
+                
+                self.item = snapshot.value! as! [String : AnyObject]
+                let singleRecipe = Recipe(dictionary: self.item)
+                self.recipesSearchFromFirebase.append(singleRecipe)
+                self.id = snapshot.key
+                self.idSearchArray.append(self.id)
+                print(self.idSearchArray.count)
+                
+            })
+        } else {
+            
+            ref?.child(defaultString).observe(.childAdded, with: { (snapshot) in
+                
+                self.item = snapshot.value! as! [String : AnyObject]
+                let singleRecipe = Recipe(dictionary: self.item)
+                self.recipesDefaultFromFirebase.append(singleRecipe)
+                self.id = snapshot.key
+                self.idDefaultArray.append(self.id)
+                print(self.idDefaultArray.count)
+                
+            })
+        }
+        
 
     }
     
-    
-    
-
-    
-
+//    func retrieveDefaultDataFromFirebase() {
+//        
+//        ref?.child(defaultString).observe(.childAdded, with: { (snapshot) in
+//            
+//            self.item = snapshot.value! as! [String : AnyObject]
+//            let singleRecipe = Recipe(dictionary: self.item)
+//            self.recipesDefaultFromFirebase.append(singleRecipe)
+//            self.id = snapshot.key
+//            self.idDefaultArray.append(self.id)
+//            print(self.idDefaultArray.count)
+//            
+//        })
+//        
+//    }
+//    
+//    func retrieveSearchDataFromFirebase() {
+//        
+//        ref?.child(defaultString).observe(.childAdded, with: { (snapshot) in
+//            
+//            self.item = snapshot.value! as! [String : AnyObject]
+//            let singleRecipe = Recipe(dictionary: self.item)
+//            self.recipesSearchFromFirebase.append(singleRecipe)
+//            self.id = snapshot.key
+//            self.idSearchArray.append(self.id)
+//            print(self.idSearchArray.count)
+//            
+//        })
+//    }
 
 }
