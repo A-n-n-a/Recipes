@@ -17,10 +17,8 @@
 		959099591EF9A0CC001D0A17 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099581EF9A0CC001D0A17 /* TableViewController.swift */; };
 		959099621EF9AFA4001D0A17 /* Hard Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099611EF9AFA4001D0A17 /* Hard Code.swift */; };
 		959099641EF9B045001D0A17 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099631EF9B045001D0A17 /* Recipe.swift */; };
-		959099681EFA4078001D0A17 /* Puppy.png in Resources */ = {isa = PBXBuildFile; fileRef = 959099671EFA4078001D0A17 /* Puppy.png */; };
 		9590996A1EFAA05A001D0A17 /* Custom Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099691EFAA05A001D0A17 /* Custom Functions.swift */; };
 		959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */; };
-		959099D01EFDA07C001D0A17 /* leather Chanel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +34,8 @@
 		959099581EF9A0CC001D0A17 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
 		959099611EF9AFA4001D0A17 /* Hard Code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hard Code.swift"; sourceTree = "<group>"; };
 		959099631EF9B045001D0A17 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		959099671EFA4078001D0A17 /* Puppy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Puppy.png; sourceTree = "<group>"; };
 		959099691EFAA05A001D0A17 /* Custom Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Custom Functions.swift"; sourceTree = "<group>"; };
 		959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "leather Chanel.jpg"; path = "Pods/../../../Downloads/leather Chanel.jpg"; sourceTree = SOURCE_ROOT; };
 		C76CC8E20F6499D52911487E /* Pods_Recipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recipe/Pods-Recipe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +95,6 @@
 				959099581EF9A0CC001D0A17 /* TableViewController.swift */,
 				959099431EF9950F001D0A17 /* Main.storyboard */,
 				959099461EF9950F001D0A17 /* Assets.xcassets */,
-				959099CF1EFDA07C001D0A17 /* leather Chanel.jpg */,
-				959099671EFA4078001D0A17 /* Puppy.png */,
 				959099601EF9AF89001D0A17 /* Models */,
 				959099481EF9950F001D0A17 /* LaunchScreen.storyboard */,
 				9590994B1EF9950F001D0A17 /* Info.plist */,
@@ -192,11 +186,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9590994A1EF9950F001D0A17 /* LaunchScreen.storyboard in Resources */,
-				959099681EFA4078001D0A17 /* Puppy.png in Resources */,
 				959099471EF9950F001D0A17 /* Assets.xcassets in Resources */,
 				959099571EF99876001D0A17 /* CustomCell.xib in Resources */,
 				959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */,
-				959099D01EFDA07C001D0A17 /* leather Chanel.jpg in Resources */,
 				959099451EF9950F001D0A17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

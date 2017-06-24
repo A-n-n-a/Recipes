@@ -22,27 +22,10 @@ struct Recipe {
         let ingredients = dictionary[ingredientsString] as! String
         let href = dictionary[hrefString] as! String
         
-        var imageFromUrl = UIImage()
-        let thumbnail = dictionary[thumbnailString] as! String?
-        var stringImage = thumbnail ?? ""
-        if stringImage.characters.count > 0 {
-            let url = URL(string: stringImage) //NSURL(string: strIcon)
-            
-            let data = NSData(contentsOf: url!)  //(contentsOfURL:url! as URL)
-            //if data != nil {
-            
-            imageFromUrl = UIImage(data:data! as Data)!
 
-        }
-        
-//        let url = URL(string: stringImage) //NSURL(string: strIcon)
-//        
-//        let data = NSData(contentsOf: url!)  //(contentsOfURL:url! as URL)
-//        //if data != nil {
-//        
-//        var imageFromUrl = UIImage(data:data! as Data)!
-        
-        //let recipeImage = stringToImage(string: thumbnail)
+        let thumbnail = dictionary[thumbnailString] as! String?
+        let stringImage = thumbnail ?? ""
+
         
         self.title = title
         self.href = href
@@ -51,10 +34,4 @@ struct Recipe {
         
     }
     
-//    init (title: String, href: String, ingredients: [String], thumbnail: String) {
-//        self.title = title
-//        self.href = href
-//        self.ingredients = ingredients
-//        self.thumbnail = thumbnail
-//    }
 }
