@@ -18,7 +18,12 @@ struct Recipe {
     
     init(dictionary: [String:AnyObject]) {
         
-        let title = dictionary[titleString] as! String
+        var title = dictionary[titleString] as! String
+        
+        if (title.range(of: newLineString) != nil) {
+            title = title.replacingOccurrences(of: newLineString, with: "")
+        }
+        
         let ingredients = dictionary[ingredientsString] as! String
         let href = dictionary[hrefString] as! String
         
