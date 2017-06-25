@@ -10,6 +10,9 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
+
+    @IBOutlet weak var viewForBounds: UIView!
+    
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var recipeLabel: UILabel!

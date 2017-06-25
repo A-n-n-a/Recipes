@@ -21,10 +21,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     var recipesSearchFromFirebase = [Recipe]()
 
     var item = [String : AnyObject]()
-//    var dishes = [String]()
-//    var id = String()
-//    var idDefaultArray = [String]()
-//    var idSearchArray = [String]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +47,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         retrieveDataFromFirebase(isSearching: isSearching)
         
     }
+    
+    //NUMBER OF ROWS
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -60,6 +59,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
 
+    // CELL FOR ROW
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -94,6 +94,23 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     }
     
+    // DID SELECT ROW AT INDEX PATH
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if isSearching {
+            let url = URL(string: recipesSearchFromFirebase[indexPath.row].href)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            
+        } else {
+            let url = URL(string: recipesDefaultFromFirebase[indexPath.row].href)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+
+        }
+    }
+    
+    //SEARCH BAR TEXT DID CHANGED
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if  searchBar.text == "" {
@@ -104,6 +121,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         }
 
     }
+    
+    // SEARCH BUTTON CLICKED
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -118,18 +137,15 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
- 
+    // PARSE DATA
+    
     func parseData(url: URL) -> [Recipe] {
         
         var recipeArray = [Recipe]()
         do {
             let data = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-            //print(json)
             let result = json[resultsString] as! [[String:AnyObject]]
-            
-            //print("RESULT\n \(result)")
-            //print(result.count)
             
             removeDataFromFirebase(isSearching: isSearching)
             
@@ -156,6 +172,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             return recipeArray
     }
     
+    // GET DATA
     
     func getData() {
         if isSearching {
@@ -173,6 +190,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    // RETRIEVE DATA
+    
     func retrieveDataFromFirebase(isSearching: Bool) {
         
         if isSearching {
@@ -182,10 +201,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 self.item = snapshot.value! as! [String : AnyObject]
                 let singleRecipe = Recipe(dictionary: self.item)
                 self.recipesSearchFromFirebase.append(singleRecipe)
-//                self.id = snapshot.key
-//                self.idSearchArray.append(self.id)
-               // print(self.idSearchArray.count)
-                print("INSIDE CLOSURE\n\(self.recipesSearchFromFirebase.count)")
                 
                 if self.recipesSearchFromFirebase.count == 10 {
                     self.tableView.reloadData()
@@ -200,11 +215,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 self.item = snapshot.value! as! [String : AnyObject]
                 let singleRecipe = Recipe(dictionary: self.item)
                 self.recipesDefaultFromFirebase.append(singleRecipe)
-//                self.id = snapshot.key
-//                self.idDefaultArray.append(self.id)
-                //print(self.idDefaultArray.count)
-                //print("INSIDE CLOSURE\n\(self.recipesDefaultFromFirebase.count)")
-                
                 if self.recipesDefaultFromFirebase.count == 10 {
                     self.tableView.reloadData()
                   //  return
@@ -212,6 +222,8 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             })
         }
     }
+    
+   
     
 
 }
