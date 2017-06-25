@@ -16,10 +16,10 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     var isSearching = false
     
-    var defaultRecipes = [Recipe]()
-    var searchedRecipes = [Recipe]()
-    var recipesDefaultFromFirebase = [Recipe]()
-    var recipesSearchFromFirebase = [Recipe]()
+    var defaultRecipes = [NSManagedObject]()
+    var searchedRecipes = [NSManagedObject]()
+    var recipesDefaultFromFirebase = [NSManagedObject]()
+    var recipesSearchFromFirebase = [NSManagedObject]()
 
     var item = [String : AnyObject]()
     
@@ -67,13 +67,17 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         let cell = Bundle.main.loadNibNamed("CustomCell", owner: self, options: nil)?.first as! CustomCell
         
         var cellImage = UIImage()
+        
+        
 
         if isSearching {
             
-            cell.titleLabel.text = recipesSearchFromFirebase[indexPath.row].title
-            cell.recipeLabel.text = recipesSearchFromFirebase[indexPath.row].ingredients
-            if recipesSearchFromFirebase[indexPath.row].recipeImage != "" {
-                cellImage = stringToImage(string: recipesSearchFromFirebase[indexPath.row].recipeImage!)
+            let recipe = recipesSearchFromFirebase[indexPath.row]
+            
+            cell.titleLabel.text = recipe.value(forKey: titleString) as? String
+            cell.recipeLabel.text = recipe.value(forKey: ingredientsString) as? String
+            if recipe.value(forKey: thumbnailString) as? String != "" {
+                cellImage = stringToImage(string: (recipe.value(forKey: thumbnailString) as? String)!)
             } else {
                 cellImage = #imageLiteral(resourceName: "NoImageIcon.png")
             }
@@ -81,10 +85,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             
         } else {
             
-            cell.titleLabel.text = recipesDefaultFromFirebase[indexPath.row].title
-            cell.recipeLabel.text = recipesDefaultFromFirebase[indexPath.row].ingredients
-            if recipesDefaultFromFirebase[indexPath.row].recipeImage != "" {
-                cellImage = stringToImage(string: recipesDefaultFromFirebase[indexPath.row].recipeImage!)
+            let recipe = recipesDefaultFromFirebase[indexPath.row]
+            
+            cell.titleLabel.text = recipe.value(forKey: titleString) as? String
+            cell.recipeLabel.text = recipe.value(forKey: ingredientsString) as? String
+            if recipe.value(forKey: thumbnailString) as? String != "" {
+                cellImage = stringToImage(string: (recipe.value(forKey: thumbnailString) as? String)!)
             } else {
                 cellImage = #imageLiteral(resourceName: "NoImageIcon.png")
             }
