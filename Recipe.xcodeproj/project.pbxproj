@@ -20,6 +20,8 @@
 		9590996A1EFAA05A001D0A17 /* Custom Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959099691EFAA05A001D0A17 /* Custom Functions.swift */; };
 		959099CD1EFD9E09001D0A17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */; };
 		959099D21EFEF4B0001D0A17 /* NoImageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 959099D11EFEF4B0001D0A17 /* NoImageIcon.png */; };
+		959099D41F002EE6001D0A17 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959099D31F002EE6001D0A17 /* CoreData.framework */; };
+		959099D71F0030FB001D0A17 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 959099D51F0030FB001D0A17 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		959099691EFAA05A001D0A17 /* Custom Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Custom Functions.swift"; sourceTree = "<group>"; };
 		959099CC1EFD9E09001D0A17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		959099D11EFEF4B0001D0A17 /* NoImageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoImageIcon.png; path = ../../../Downloads/NoImageIcon.png; sourceTree = "<group>"; };
+		959099D31F002EE6001D0A17 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		959099D61F0030FB001D0A17 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C76CC8E20F6499D52911487E /* Pods_Recipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E521BDC52F6D10D0DFD53 /* Pods-Recipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recipe/Pods-Recipe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959099D41F002EE6001D0A17 /* CoreData.framework in Frameworks */,
 				643FCF992FE7D1AC2B07A293 /* Pods_Recipe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +71,7 @@
 		93CFE1FC023199FFE8A6D499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				959099D31F002EE6001D0A17 /* CoreData.framework */,
 				C76CC8E20F6499D52911487E /* Pods_Recipe.framework */,
 			);
 			name = Frameworks;
@@ -76,8 +82,9 @@
 			children = (
 				9590993E1EF9950F001D0A17 /* Recipe */,
 				9590993D1EF9950F001D0A17 /* Products */,
-				4E8B0E3669C2EA1ECFCB87E8 /* Pods */,
 				93CFE1FC023199FFE8A6D499 /* Frameworks */,
+				4E8B0E3669C2EA1ECFCB87E8 /* Pods */,
+				959099D51F0030FB001D0A17 /* DataModel.xcdatamodeld */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,6 +262,7 @@
 				959099561EF99876001D0A17 /* CustomCell.swift in Sources */,
 				9590996A1EFAA05A001D0A17 /* Custom Functions.swift in Sources */,
 				959099641EF9B045001D0A17 /* Recipe.swift in Sources */,
+				959099D71F0030FB001D0A17 /* DataModel.xcdatamodeld in Sources */,
 				959099591EF9A0CC001D0A17 /* TableViewController.swift in Sources */,
 				959099401EF9950F001D0A17 /* AppDelegate.swift in Sources */,
 				959099621EF9AFA4001D0A17 /* Hard Code.swift in Sources */,
@@ -428,6 +436,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		959099D51F0030FB001D0A17 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				959099D61F0030FB001D0A17 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 959099D61F0030FB001D0A17 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 959099341EF9950F001D0A17 /* Project object */;
 }
